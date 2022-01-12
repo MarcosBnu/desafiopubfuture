@@ -1,0 +1,62 @@
+<DOCTYPE html>
+<html lang = "pt">
+<head>
+    <title>MyLibrary</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">	
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center">Receitas</h1>
+    <br><br>
+    <div class="col-12">
+        <h1 style="text-align: center;">Cadastrar Receitas</h1><br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Nome da receita</label>
+            <input class="form-control" type="text" name="Nome_da_receita" id="campoNome_da_receita" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Modo de Preparo</label>
+            <input class="form-control" type="text" name="Modo_de_preparo" id="campoModo_de_preparo" placeholder="Digite o modo de preparo da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Igredientes</label>
+            <input class="form-control" type="text" name="Igredientes" id="campoIgredientes" placeholder="Digite os Igredientes da sua receita" required>
+          </div>
+          <div class="from-group">
+            <button id="btIncluirreceita" class="btn btn-warning">Entrar</button><br><br>
+          </div>
+        </form>
+    </div>
+    <br><br>
+    <div class="col-12">
+        <h1 style="text-align: center;">Editar Receitas</h1><br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Numero da receita que voce deseja alterar</label>
+            <input class="form-control" type="number" name="idreceita" id="idreceita" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>O que voce deseja alterar?</label>
+            <br>
+            <select class="form-control" name="Status" id="idCampo_alt">
+              <option value="Nome da receita">Nome da receita</option>
+              <option value="Modo de preparo">Modo de preparo</option>
+              <option value="Igredientes">Igredientes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Digite as alteraçoes</label>
+            <input class="form-control" type="text" name="idAlterasao" id="idAlterasao" placeholder="Digite o modo de preparo da sua receita" required>
+          </div>
+          <div class="from-group">
+            <button id="btAlterar_receita" class="btn btn-warning">Alterar</button><br><br>
+          </div>
+        </form>
+    </div>
+<script src="pub.js"></script>
+</body>
+</html>
