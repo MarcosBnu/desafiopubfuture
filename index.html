@@ -1,0 +1,63 @@
+<DOCTYPE html>
+    <html lang = "pt">
+    <head>
+        <title>MyLibrary</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">	
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <h1 style="text-align: center">Login Feito</h1>
+        <br><br>
+        <div class="col-12">
+            <h2 style="text-align: center;">Editar sua conta</h2><br><br>
+            <form onsubmit="return false;">
+              <div class="form-group">
+                <label>Nome do usuario</label>
+                <input class="form-control" type="text" name="ENome_usuario" id="campoENome_usuario" placeholder="Digite o nome da sua receita">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="email" name="EEmail" id="campoEEmail" placeholder="Digite o nome da sua receita">
+              </div>
+              <div class="form-group">
+                <label>Senha</label>
+                <input class="form-control" type="password" name="ESenha" id="campoESenha" placeholder="Digite o nome da sua receita">
+              </div>
+              <div class="form-group">
+                <label>Saldo</label>
+                <input class="form-control" type="number" name="ESaldo" id="campoESaldo" placeholder="Digite o nome da sua receita">
+              </div>
+              <div class="form-group">
+                <label>Tipo de conta?</label>
+                <br>
+                <select class="form-control" name="EStatus" id="campoET_conta">
+                  <option value="Carteira">Carteira</option>
+                  <option value="Conta corrente">Conta corrente</option>
+                  <option value="Poupança">Poupança</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Instituição financeira</label>
+                <input class="form-control" type="text" name="Efinanceira" id="campoEfinanceira" placeholder="Digite o nome da sua receita">
+              </div>
+              <div class="from-group">
+                <button id="btEdusuario" class="btn btn-warning">Entrar</button><br><br>
+              </div>
+            </form>
+
+              <h2 style="text-align: center;">Quer excluir sua conta? Clique no botão a baixo</h2><br><br>
+              <form onsubmit="return false;">
+                <div class="from-group">
+                  <button id="btExcluir" class="btn btn-warning" style="margin-left:47%">Excluir</button><br><br>
+                </div>
+              </form>
+
+              <h2 class="container-fluid" id="cards">PAREI DE LER</h2><br><br>
+              <div id="listar_contas" class="row">
+            </div>
+    <script src="conta.js"></script>
+    </body>
+    </html>

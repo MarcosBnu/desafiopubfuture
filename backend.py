@@ -1,17 +1,24 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, json, jsonify, request, send_file, session
+from flask import Flask, json, jsonify, request, send_file, session, render_template, redirect, url_for
+from sqlalchemy.orm import query
+from werkzeug.datastructures import auth_property
+#from werkzeug.utils import redirect
 from werkzeug.wrappers import response
 from flask_cors import CORS
-from flask_login import login_user
+from flask_login import login_user, login_required, current_user
 from modelo import *
 import os
-import random
 
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
 path = os.path.dirname(os.path.abspath(__file__))
+
+np=[]
 @app.route("/")
 def padrao():
     return "backend funciona"
+@app.route("/teste", methods=["GET"])
+def index():
+    return render_template('index.html')
 @app.route("/cadastrar_usuario", methods=["POST"])
 def cadastrar_usuario():
     # preparar uma resposta otimista
@@ -28,21 +35,84 @@ def cadastrar_usuario():
     # adicionar cabeçalho de liberação de origem
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta  # responder!
-@app.route("/login_usuario", methods=["POST"])
+
+@app.route("/login_usuario", methods=["GET", "POST"])
 def login_usuario():#função para o usuario logar
     dados = request.get_json()
-    Cad = db.session.query(Usuario)\
+    user = db.session.query(Usuario)\
         .filter(Usuario.Email==dados['VEmail'], Usuario.Senha==dados['VSenha'])\
         .first() #busca no banco de dados as informaçoes
-    if Cad:
-        login_user(Cad)
-        resposta=jsonify({"resultado":"ok", "detalhes":Cad.json()})
+    if user:
+        login_user(user, remember=True)
+        if user.is_authenticated==True:
+            np.append(current_user.id)
+            resposta=jsonify({"resultado":"ok", "detalhes":np})
+        else:
+            resposta=jsonify({"resultado":"erro", "detalhes":"erro"})
         #se cad não for nulo, ele ira retornar os seus valores convertidos em json
     else:
         # informar mensagem de erro
-        resposta=jsonify({"resultado":"erro", "detalhes": "Nao encontrado"})
+        resposta=jsonify({"resultado":"erro", "detalhes":"erro"})
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
+
+@app.route("/editar_usuario", methods=['POST'])
+def editar_usuario():
+    #busca no banco de dados as informaçoes
+    dados = request.get_json() #pego os dados para atualizar
+    #objeto=Usuario.query.filter_by(id=).first()
+    valor=np[0]
+    objeto=Usuario.query.filter_by(id=valor).first()
+    resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
+    try:
+        # excluir a pessoa do ID informado
+        if dados["ENome_usuario"]!="":
+            objeto.Nome_usuario = dados['ENome_usuario']
+        if dados["EEmail"]!="":
+            objeto.Email = dados['EEmail']
+        if dados["ESenha"]!="":
+            objeto.Senha = dados['ESenha']
+        if dados["ESaldo"]!="":
+            objeto.Saldo = dados['ESaldo']
+        if dados["EStatus"]!="":
+            objeto.Status = dados['EStatus']
+        if dados["Efinanceira"]!="":
+            objeto.financeira = dados['Efinanceira']
+        db.session.add(objeto)
+        db.session.commit()
+    except Exception as e:
+        # informar mensagem de erro
+        resposta = jsonify({"resultado":"erro", "detalhes":str(valor)})
+        # adicionar cabeçalho de liberação de origem
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta # responder!
+@app.route("/deletar_conta", methods=['DELETE'])
+def deletar_livro():
+    #busca no banco de dados as informaçoes
+    resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
+    try:
+        # excluir a pessoa do ID informado
+        Usuario.query.filter_by(id=np[0]).delete()
+        # confirmar a exclusão
+        db.session.commit()
+    except Exception as e:
+        # informar mensagem de erro
+        resposta = jsonify({"resultado":"erro", "detalhes":str(e)})
+        # adicionar cabeçalho de liberação de origem
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta # responder!
+
+@app.route("/lista_contas")
+def lista_contas():
+    # obter as livros do cadastro
+    Usi = db.session.query(Usuario).all()
+    # aplicar o método json que a classe livros possui a cada elemento da lista
+    livros_em_json = [ x.json() for x in Usi ]
+    # converter a lista do python para json
+    resposta = jsonify(livros_em_json)
+    # PERMITIR resposta para outras pedidos oriundos de outras tecnologias
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta # retornar...
 '''@app.route("/incluir_receita", methods=["POST"])
 def incluir_receita():
     # preparar uma resposta otimista
