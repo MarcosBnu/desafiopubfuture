@@ -110,3 +110,6 @@
   <li>Você será redirecionado para a página Index, lá estarão as implementações solicitadas.</li>
 </ol>
 
+<h2>Observação</h2>
+<p>Sempre quando for utilizar um dos filtros pela segunda vez, clique no botão limpar pesquisa, para assim poder fazer a pesquisa novamente.</p>
+
