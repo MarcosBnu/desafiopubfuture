@@ -139,7 +139,7 @@ $(function () { // quando o documento estiver pronto/carregado
         function deletar_conta (retorno) {
             if (retorno.resultado == "ok") { // a operação deu certo?
                 // informar resultado de sucesso
-                alert("receita deletada com sucesso!");
+                alert("conta deletada com sucesso!");
                 window.location.href = 'login.html';
                 // limpar os campos
             } else {
