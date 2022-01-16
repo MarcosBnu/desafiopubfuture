@@ -1,0 +1,392 @@
+<DOCTYPE html>
+<html lang = "pt">
+<head>
+    <title>MyLibrary</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">	
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center">Login Feito</h1>
+    <br><br>
+    <div class="col-12">
+        <h2 style="text-align: center;">Editar sua conta</h2><br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Nome do usuario</label>
+            <input class="form-control" type="text" name="ENome_usuario" id="campoENome_usuario" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="email" name="EEmail" id="campoEEmail" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <input class="form-control" type="password" name="ESenha" id="campoESenha" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="form-group">
+            <label>Saldo</label>
+            <input class="form-control" type="number" name="ESaldo" id="campoESaldo" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="form-group">
+            <label>Tipo de conta?</label>
+            <br>
+            <select class="form-control" name="EStatus" id="campoET_conta">
+              <option value="Carteira">Carteira</option>
+              <option value="Conta corrente">Conta corrente</option>
+              <option value="Poupança">Poupança</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Instituição financeira</label>
+            <input class="form-control" type="text" name="Efinanceira" id="campoEfinanceira" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="from-group">
+            <button id="btEdusuario" class="btn btn-warning">Editar</button><br><br>
+          </div>
+        </form>
+
+          <h2 style="text-align: center;">Quer excluir sua conta? Clique no botão a baixo</h2><br><br>
+          <form onsubmit="return false;">
+            <div class="from-group">
+              <button id="btExcluir" class="btn btn-warning" style="margin-left:47%">Excluir</button><br><br>
+            </div>
+          </form>
+          <br><br>
+          <div>
+          <h2 class="container-fluid">Lista de contas</h2><br><br>
+          <div id="listar_contas" class="row">
+          </div>
+        <br>
+        <h2 style="text-align: center;">Transferir Saldo</h2><br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Id da conta</label>
+            <input class="form-control" type="number" name="idconta" id="campoidconta" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="form-group">
+            <label>Nome do proprietario da conta</label>
+            <input class="form-control" type="text" name="Tnome" id="campoTnome" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="form-group">
+            <label>Valor a Transferir</label>
+            <input class="form-control" type="number" name="Tvalor" id="campoTvalor" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="form-group">
+            <label>Sua senha</label>
+            <input class="form-control" type="password" name="TSenha" id="campoTSenha" placeholder="Digite o nome da sua receita">
+          </div>
+          <div class="from-group">
+            <button id="btTransferir" class="btn btn-warning">Transferir</button><br><br>
+          </div>
+        </form>
+        <br><br>
+        <div style="text-align:center">
+          <h2 class="container-fluid" id="cards">Lista de Saldo</h2><br><br>
+          <div id="listar_saldo" class="row">
+        </div>
+      </div>
+        <br>
+        <hr><hr>
+        <h1 style="text-align: center;">Receita</h1>
+        <br><br>
+        <h2 style="text-align: center;">Cadastrar Receita</h2>
+        <br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Valor da Receita</label>
+            <input class="form-control" type="number" name="Rreceita" id="campoRreceita" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Data de Recebimento</label>
+            <input class="form-control" type="date" name="Rrecebimento" id="campoRrecebimento" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Data de Recebimento esperado</label>
+            <input class="form-control" type="date" name="Resperado" id="campoResperado" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Descrição</label>
+            <input class="form-control" type="text" name="Rdesc" id="campoRdesc" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Tipo de Receita?</label>
+            <br>
+            <select class="form-control" name="Rtipo" id="campoRtipo">
+              <option value="Salário">Salário</option>
+              <option value="Presente">Presente</option>
+              <option value="Premio">Premio</option>
+              <option value="Outros">Outros</option>
+            </select>
+          <br>
+          <div class="from-group">
+            <button id="btcadreceita" class="btn btn-warning">Cadastrar</button><br><br>
+          </div>
+        </form>
+        <br><br>
+        <h2 style="text-align: center;">Editar Receita</h2>
+        <br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Numero da Receita</label>
+            <input class="form-control" type="number" name="Eidreceita" id="campoEidreceita" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Valor da Receita</label>
+            <input class="form-control" type="number" name="ERreceita" id="campoERreceita" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Data de Recebimento</label>
+            <input class="form-control" type="date" name="ERrecebimento" id="campoERrecebimento" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Data de Recebimento esperado</label>
+            <input class="form-control" type="date" name="EResperado" id="campoEResperado" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Descrição</label>
+            <input class="form-control" type="text" name="ERdesc" id="campoERdesc" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Tipo de Receita?</label>
+            <br>
+            <select class="form-control" name="Rtipo" id="campoERtipo">
+              <option value="Salário">Salário</option>
+              <option value="Presente">Presente</option>
+              <option value="Premio">Premio</option>
+              <option value="Outros">Outros</option>
+            </select>
+          <br>
+          <div class="from-group">
+            <button id="btEdreceita" class="btn btn-warning">Editar</button><br><br>
+          </div>
+        </form>
+        <br><br>
+        <h2 style="text-align: center;">Deletar Receitas</h2>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Numero da Receita que voce deseja excluir</label>
+            <input class="form-control" type="number" name="Delreceita" id="campoDelreceita" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="from-group">
+            <button id="btDelreceita" class="btn btn-warning">Excluir</button><br><br>
+          </div>
+        </form>
+        <br><br>
+        <div style="text-align:center">
+          <h2 class="container-fluid">Lista das sua Receitas</h2><br><br>
+          <div id="listar_receita" class="row">
+        </div>
+      </div>
+        <br><br>
+        <h2 style="text-align:center">Filtro de receitas por data</h2>
+        <br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Digite a data inicial</label>
+            <input class="form-control" type="date" name="dataincial" id="campoDatainicial" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Digite a data final</label>
+            <input class="form-control" type="date" name="datafinal" id="campoDatafinal" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <label>Voce deseja ver as datas de recebimento ou de recebimento esperado?</label>
+          <br>
+          <select class="form-control" name="FDtipo" id="campoFDtipo">
+            <option value="receber">receber</option>
+            <option value="esperado">esperado</option>
+          </select>
+          <br>
+          <div class="from-group">
+            <button id="btFiltrodata" class="btn btn-warning">Pesquisar</button><br><br>
+          </div>
+          <div class="from-group">
+            <button id="btLimp" class="btn btn-warning">Limpar a pesquisa</button><br><br>
+          </div>
+          <div id="listar_filtrodata" class="row">
+        </form>
+      </div>
+        <br><br>
+        <h2 style="text-align:center">Filtro por tipo de receitas</h2>
+        <form onsubmit="return false;">
+          <label>tipo de receita</label>
+          <br>
+          <select class="form-control" name="Ftipo" id="campoFtipo">
+            <option value="Salário">Salário</option>
+            <option value="Presente">Presente</option>
+            <option value="Premio">Premio</option>
+            <option value="Outros">Outros</option>
+          </select>
+          <br>
+          <div class="from-group">
+            <button id="btFiltrotipo" class="btn btn-warning">Pesquisar</button><br><br>
+          </div>
+          <div class="from-group">
+            <button id="btLimp" class="btn btn-warning">Limpar a pesquisa</button><br><br>
+          </div>
+          <div id="listar_filtrotipo" class="row">
+        </form>
+      </div>
+      <h2 style="text-align: center">Lista total de receitas</h2>
+      <br><br>
+      <div id="listar_receitatotal" class="row">
+      </div>
+      <hr><hr>
+      <br>
+    </div>
+      <h1 style="text-align: center;">Despesas</h1>
+      <br><br>
+      <h2 style="text-align: center;">Cadastrar Despesas</h2>
+        <br><br>
+      <form onsubmit="return false;">
+        <div class="form-group">
+          <label>Valor da Despesa</label>
+          <input class="form-control" type="number" name="Vdespesas" id="campoVdespesas" placeholder="Digite o nome da sua receita" required>
+        </div>
+        <div class="form-group">
+          <label>Data de Pagamento</label>
+          <input class="form-control" type="date" name="VDatapagament" id="campoVDatapagament" placeholder="Digite o nome da sua receita" required>
+        </div>
+        <div class="form-group">
+          <label>Data de Pagamento esperado</label>
+          <input class="form-control" type="date" name="Pagamentoesperado" id="campoPagamentoesperado" placeholder="Digite o nome da sua receita" required>
+        </div>
+        <div class="form-group">
+          <label>Tipo de Despesa?</label>
+          <br>
+          <select class="form-control" name="Tdespesa" id="campoTdespesa">
+            <option value="Alimentação">Alimentação</option>
+            <option value="Educação">Educação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Moradia">Moradia</option>
+            <option value="Roupa">Roupa</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Outros">Outros</option>
+          </select>
+        <br>
+        <div class="from-group">
+          <button id="btcaddespesas" class="btn btn-warning">Cadastrar</button><br><br>
+        </div>
+      </form>
+      <br><br>
+      <h2 style="text-align: center;">Editar Despesa</h2>
+        <br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Numero da Despesa</label>
+            <input class="form-control" type="number" name="Eiddespesa" id="campoEiddespesa" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Valor da Despesa</label>
+            <input class="form-control" type="number" name="EDdespesa" id="campoEDdespesa" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Data de Pagamento</label>
+            <input class="form-control" type="date" name="EDrecebimento" id="campoEDrecebimento" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Data de Pagamento esperado</label>
+            <input class="form-control" type="date" name="DEResperado" id="campoDEResperado" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Tipo de Despesa?</label>
+            <br>
+            <select class="form-control" name="DRtipo" id="campoEDRtipo">
+              <option value="Alimentação">Alimentação</option>
+              <option value="Educação">Educação</option>
+              <option value="Lazer">Lazer</option>
+              <option value="Moradia">Moradia</option>
+              <option value="Roupa">Roupa</option>
+              <option value="Saúde">Saúde</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Outros">Outros</option>
+            </select>
+          <br>
+          <div class="from-group">
+            <button id="btEdespesas" class="btn btn-warning">Editar</button><br><br>
+          </div>
+        </form>
+        <br><br>
+        <h2 style="text-align: center;">Deletar Despesas</h2>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Numero da Despesa que voce deseja excluir</label>
+            <input class="form-control" type="number" name="Deldespesas" id="campoDeldespesas" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="from-group">
+            <button id="btDeldespesas" class="btn btn-warning">Excluir</button><br><br>
+          </div>
+        </form>
+        <br><br>
+        <div style="text-align:center">
+          <h2 class="container-fluid">Lista das suas Despesas</h2><br><br>
+          <div id="listar_despesas" class="row">
+        </div>
+      </div>
+      <br><br>
+        <h2 style="text-align:center">Filtro de Despesas por data</h2>
+        <br><br>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label>Digite a data inicial</label>
+            <input class="form-control" type="date" name="Ddataincial" id="campoDDatainicial" placeholder="Digite o nome da sua receita" required>
+          </div>
+          <div class="form-group">
+            <label>Digite a data final</label>
+            <input class="form-control" type="date" name="Ddatafinal" id="campoDDatafinal" placeholder="Digite o nome da sua receita" required>
+          </div>
+        </div>
+          <label>Voce deseja ver as datas de Pagamento ou de Pagamento esperado?</label>
+          <br>
+          <select class="form-control" name="DFDtipo" id="campoDFDtipo">
+            <option value="DPagamento">Pagamento</option>
+            <option value="Desperado">Pagamento esperado</option>
+          </select>
+          <br>
+          <div class="from-group">
+            <button id="btDFiltrodata" class="btn btn-warning">Pesquisar</button><br><br>
+          </div>
+          <div class="from-group">
+            <button id="btLimp" class="btn btn-warning">Limpar a pesquisa</button><br><br>
+          </div>
+          <div id="listar_Dfiltrodata" class="row">
+        </form>
+      </div>
+        <br><br>
+        <h2 style="text-align:center">Filtro por tipo de despesa</h2>
+        <form onsubmit="return false;">
+          <label>tipo de despesa</label>
+          <br>
+          <select class="form-control" name="FiltroDespesatipo" id="campoFiltroDespesatipo">
+            <option value="Alimentação">Alimentação</option>
+            <option value="Educação">Educação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Moradia">Moradia</option>
+            <option value="Roupa">Roupa</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Outros">Outros</option>
+          </select>
+          <br>
+          <div class="from-group">
+            <button id="btFiltrotipodespesas" class="btn btn-warning">Pesquisar</button><br><br>
+          </div>
+          <div class="from-group">
+            <button id="btLimp" class="btn btn-warning">Limpar a pesquisa</button><br><br>
+          </div>
+          <div id="listar_filtrotipodespesas" class="row">
+        </form>
+      </div>
+        <h2 style="text-align: center">Lista total de despesas</h2>
+        <br><br>
+        <div id="listar_despesatotal" class="row">
+        </div>
+
+<script src="Despesas.js"></script>
+<script src="Conta.js"></script>
+<script src="Receita.js"></script>
+</body>
+</html>
